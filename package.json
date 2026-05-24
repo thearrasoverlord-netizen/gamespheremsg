@@ -1,13 +1,14 @@
 {
-  "name": "mi-bot",
+  "name": "my-discord-bot",
   "version": "1.0.0",
-  "description": "Bot de Discord básico",
+  "description": "Basic Discord bot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
     "discord.js": "^14.13.0",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "express": "^5.1.0"
   }
 }
