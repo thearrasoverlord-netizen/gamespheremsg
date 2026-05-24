@@ -9,7 +9,7 @@ const client = new Client({
 const commands = [
     new SlashCommandBuilder()
         .setName('ping')
-        .setDescription('Muestra la latencia del bot')
+        .setDescription('Shows the bot latency')
         .toJSON()
 ];
 
@@ -17,21 +17,21 @@ const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
 (async () => {
     try {
-        console.log('Registrando comandos...');
+        console.log('Registering slash commands...');
 
         await rest.put(
             Routes.applicationCommands(process.env.CLIENT_ID),
             { body: commands }
         );
 
-        console.log('Comandos registrados.');
+        console.log('Slash commands registered successfully.');
     } catch (error) {
         console.error(error);
     }
 })();
 
 client.once('ready', () => {
-    console.log(`Conectado como ${client.user.tag}`);
+    console.log(`Logged in as ${client.user.tag}`);
 });
 
 client.on('interactionCreate', async interaction => {
@@ -40,7 +40,10 @@ client.on('interactionCreate', async interaction => {
     if (interaction.commandName === 'ping') {
         const latency = client.ws.ping;
 
-        await interaction.reply(`🏓 Pong! Lat: ${latency} ms`);
+await interaction.reply(
+`🏓 Pong!
+-# Lat: ${latency} ms`
+);
     }
 });
 
