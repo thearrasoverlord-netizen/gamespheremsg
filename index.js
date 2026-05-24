@@ -51,11 +51,21 @@ client.on('interactionCreate', async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
     if (interaction.commandName === 'ping') {
+
+        const sent = await interaction.reply({
+            content: 'Pinging...',
+            fetchReply: true
+        });
+
         const latency = client.ws.ping;
 
-        await interaction.reply(
+        const responseTime = Math.abs(
+            sent.createdTimestamp - interaction.createdTimestamp
+        );
+
+        await interaction.editReply(
 `🏓 Pong!
--# Lat: ${latency} ms.`
+-# Latency: ${latency} ms | Response: ${responseTime} ms`
         );
     }
 });
