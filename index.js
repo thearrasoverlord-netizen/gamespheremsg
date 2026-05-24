@@ -1,6 +1,19 @@
 const { Client, GatewayIntentBits, SlashCommandBuilder, Routes } = require('discord.js');
 const { REST } = require('@discordjs/rest');
+const express = require("express");
 require('dotenv').config();
+
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+    res.send("Bot is online!");
+});
+
+app.listen(PORT, () => {
+    console.log(`Web server running on port ${PORT}`);
+});
 
 const client = new Client({
     intents: [GatewayIntentBits.Guilds]
@@ -40,10 +53,10 @@ client.on('interactionCreate', async interaction => {
     if (interaction.commandName === 'ping') {
         const latency = client.ws.ping;
 
-await interaction.reply(
+        await interaction.reply(
 `🏓 Pong!
 -# Lat: ${latency} ms.`
-);
+        );
     }
 });
 
