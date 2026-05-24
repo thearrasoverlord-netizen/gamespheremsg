@@ -42,7 +42,7 @@ client.on('interactionCreate', async interaction => {
 
 await interaction.reply(
 `🏓 Pong!
--# Lat: ${latency} ms`
+-# Lat: ${latency} ms.`
 );
     }
 });
