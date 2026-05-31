@@ -1,3 +1,5 @@
+console.log("Log 1");
+
 const { Client, GatewayIntentBits, SlashCommandBuilder, Routes } = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const express = require("express");
